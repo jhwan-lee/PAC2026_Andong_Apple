@@ -1,0 +1,34 @@
+# Python & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# YOLO & Machine Learning outputs
+runs/
+*.pt
+*.onnx
+*.engine
+
+# Datasets
+yolo_quality/apple_dataset/
+datasets/
+data/
+*.zip
+*.tar.gz
+
+# Temporary & Reference docs
+*.pdf
+깃허브_사용법_교육자료.txt
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
