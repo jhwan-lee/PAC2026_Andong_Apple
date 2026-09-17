@@ -60,9 +60,11 @@ case $choice in
         echo -e "\n🎉 모든 검증이 성공적으로 완료되었습니다!"
         ;;
     2)
-        echo -e "\n▶ [2번] YOLO 사과 품질 모델 학습 시작..."
+        echo -e "\n▶ [2번] YOLO 사과 품질 모델 학습 시작 (50 Epochs)..."
         cd yolo_quality
-        python3 train_apple_yolo.py --data apple_data_template.yaml --model yolo11n.pt --epochs 80 --device 0
+        python3 train_apple_yolo.py --data apple_data.yaml --model yolo11n.pt --epochs 50 --batch 16 --device 0
+        echo -e "\n🎉 학습 완료! 결과 그래프 및 가중치 확인이 가능합니다."
+        read -p "엔터를 누르면 메뉴로 돌아갑니다..."
         ;;
     3)
         echo -e "\n▶ [3번] YOLO 추론 인터페이스 단독 실행..."

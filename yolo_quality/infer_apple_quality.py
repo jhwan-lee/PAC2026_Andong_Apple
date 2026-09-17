@@ -61,10 +61,22 @@ class AppleYOLOClassifier:
         self.use_hybrid = use_hybrid_color and HAVE_DETECTOR
         self.model = None
 
+        # 가중치 자동 탐색 (지정되지 않았거나 기본값일 때 최신 best.pt 검색)
+        if weights_path is None or not os.path.exists(weights_path):
+            candidates = [
+                "/home/jaehwan/Documents/PAC2026_Andong_Apple/runs/detect/runs/train_apple/apple_quality_v1-2/weights/best.pt",
+                "/home/jaehwan/Documents/PAC2026_Andong_Apple/runs/detect/runs/train_apple/apple_quality_v1/weights/best.pt",
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), "runs/train_apple/apple_quality_v1/weights/best.pt")
+            ]
+            for c in candidates:
+                if os.path.exists(c):
+                    weights_path = c
+                    break
+
         if weights_path and os.path.exists(weights_path):
             from ultralytics import YOLO
             self.model = YOLO(weights_path)
-            print(f"[AppleYOLO] 모델 로드 완료: {weights_path}")
+            print(f"[AppleYOLO] 최적 모델 가중치 로드 완료: {weights_path}")
         else:
             print("[AppleYOLO] 가중치 파일 미지정 또는 없음. 룰베이스 백업 모드로 동작합니다.")
 

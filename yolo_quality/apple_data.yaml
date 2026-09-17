@@ -1,0 +1,10 @@
+# PAC 2026 안동청과 미션 - 사과 품질 선별 YOLO 데이터셋
+path: /home/jaehwan/Documents/PAC2026_Andong_Apple/yolo_quality/apple_dataset
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: grade_high
+  1: grade_mid
+  2: defect
